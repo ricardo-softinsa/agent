@@ -19,5 +19,11 @@ pipeline{
 			echo "Second stage executed on ${NODE_NAME}"
 		}
 	  }
+	  stage('Third'){
+		agent { label 'ubunu_agent' }
+		steps{
+			echo "Third stage executed on ${NODE_NAME}"
+		}
+	  }
 	}
 }
