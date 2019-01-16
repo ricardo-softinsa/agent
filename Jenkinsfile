@@ -5,7 +5,8 @@ pipeline{
 		stage('SCM') {
 				agent any
 				steps{
-					git 'https://github.com/ricardo-softinsa/Node-Pipeline.git'
+					git 'https://github.com/ricardo-softinsa/agent.git'
+					echo "Executed on:  ${NODE_NAME}"
 				}
 		}
 		stage("Build Project"){
@@ -14,6 +15,7 @@ pipeline{
 					agent { label 'MAC_Agent' }
 					steps{
 						echo "Build Step for iOS"
+						echo "Executed on: ${NODE_NAME}"
 						//Navigate to project folder (Note: it's where the <Name>.xcodeproj resides)
 						//The command below will list all schemes, we then need to choose one
 						//COMMAND: sh 'xcodebuild -list -project <NAME>.xcodeproj/'
@@ -25,6 +27,7 @@ pipeline{
 					agent any
 					steps{
 						echo "Build Step for Android"
+						echo "Executed on: ${NODE_NAME}"
 						//Navigate to project folder
 						//COMMAND: bat 'gradlew [PROJECT_NAME]'
 					}
@@ -38,6 +41,7 @@ pipeline{
 					agent { label 'MAC_Machine' }
 					steps{
 						echo "Distribution for iOS"
+						echo "Executed on: ${NODE_NAME}"
 						//sh 'testfairy-uploader.sh [PROJECT_APK]'
 					}
 				}
@@ -45,6 +49,7 @@ pipeline{
 					agent any
 					steps{
 						echo "Distribution for Android"
+						echo "Executed on: ${NODE_NAME}"
 						//sh 'testfairy-uploader.sh [PROJECT_APK]'
 					}
 				}
