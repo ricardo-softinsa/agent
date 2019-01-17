@@ -40,7 +40,6 @@ pipeline{
 				stage("iOS Distribution"){
 					agent { label 'MAC_Agent' }
 					steps{
-						echo "${NON_EXISTING}"
 						echo "Distribution for iOS"
 						echo "Executed on: ${NODE_NAME}"
 					}
