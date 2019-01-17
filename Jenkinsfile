@@ -35,14 +35,13 @@ pipeline{
 			}
 		}
 		//For this stage we need to download testfairy-uploader.sh (From command-line-uploader project TestFairy GitHub)
-		stage("TestFairy Distribution"){
+		stage("Distribution"){
 			parallel{
 				stage("iOS Distribution"){
 					agent { label 'MAC_Machine' }
 					steps{
 						echo "Distribution for iOS"
 						echo "Executed on: ${NODE_NAME}"
-						//sh 'testfairy-uploader.sh [PROJECT_APK]'
 					}
 				}
 				stage("Android Distribution"){
@@ -50,7 +49,6 @@ pipeline{
 					steps{
 						echo "Distribution for Android"
 						echo "Executed on: ${NODE_NAME}"
-						//sh 'testfairy-uploader.sh [PROJECT_APK]'
 					}
 				}
 			}
