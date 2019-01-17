@@ -38,7 +38,7 @@ pipeline{
 		stage("Distribution"){
 			parallel{
 				stage("iOS Distribution"){
-					agent { label 'MAC_Machine' }
+					agent { label 'MAC_Agent' }
 					steps{
 						echo "Distribution for iOS"
 						echo "Executed on: ${NODE_NAME}"
