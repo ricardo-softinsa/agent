@@ -34,7 +34,7 @@ pipeline{
 				}
 			}
 		}
-		//For this stage we need to download testfairy-uploader.sh (From command-line-uploader project TestFairy GitHub)
+		//uguyguy9gtgyuguygyu
 		stage("Distribution"){
 			parallel{
 				stage("iOS Distribution"){
