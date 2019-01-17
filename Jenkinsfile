@@ -40,6 +40,7 @@ pipeline{
 				stage("iOS Distribution"){
 					agent { label 'MAC_Agent' }
 					steps{
+						fwhgeihgw
 						echo "Distribution for iOS"
 						echo "Executed on: ${NODE_NAME}"
 					}
