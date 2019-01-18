@@ -1,3 +1,5 @@
+def FAILED_STAGE
+
 pipeline{
 	agent none
 	
@@ -9,26 +11,36 @@ pipeline{
                     stages{
                         stage('Git Checkout'){
                             steps{
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
                             }
                         }
                         stage('Analising code'){
                             steps{
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Analising code on ---- ${NODE_NAME}"
+                                echo "${UNKNOWN_VAR}"
                             }
                         }
                         stage('Deploying'){
                             steps{
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Deploying code on ---- ${NODE_NAME}"
                             }
                         }
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "Platform: ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
+                            slackSend color: 'good', message: "Platform: ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
                         }
                         failure{
-                            slackSend color: 'danger', message: "Platform: ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}"
+                            slackSend color: 'danger', message: "Platform: ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
                         }
                     }
                 }
@@ -39,27 +51,35 @@ pipeline{
                     stages{
                         stage('Git Checkout'){
                             steps{
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
                             }
                         }
                         stage('Analising code'){
                             steps{
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Analising code on ---- ${NODE_NAME}"
                             }
                         }
                         stage('Deploying'){
                             steps{
-				echo "${VARR}"
+                                script{
+                                    FAILED_STAGE=env.STAGE_NAME
+                                }
                                 echo "Deploying code on ---- ${NODE_NAME} !!!!!!!!!!!!!!!!!!!!!"
                             }
                         }
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "Platform: iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
+                            slackSend color: 'good', message: "Platform: iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
                         }
                         failure{
-                            slackSend color: 'danger', message: "Platform: iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}"
+                            slackSend color: 'danger', message: "Platform: iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
                         }
                     }
                 }
@@ -75,4 +95,5 @@ pipeline{
         }
     }
 }
+
 
