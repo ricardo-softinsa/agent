@@ -40,7 +40,6 @@ pipeline{
                         stage('Git Checkout'){
                             steps{
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
-				    echo "${VARR}"
                             }
                         }
                         stage('Analising code'){
@@ -50,6 +49,7 @@ pipeline{
                         }
                         stage('Deploying'){
                             steps{
+				echo "${VARR}"
                                 echo "Deploying code on ---- ${NODE_NAME} !!!!!!!!!!!!!!!!!!!!!"
                             }
                         }
