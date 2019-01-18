@@ -15,13 +15,21 @@ pipeline{
                         stage('Analising code'){
                             steps{
                                 echo "Analising code on ---- ${NODE_NAME}"
-                                echo "${UNKNOWN_VAR}"
+                                echo ${UNKNOWN_VAR}
                             }
                         }
                         stage('Deploying'){
                             steps{
-                                echo "Deploying code on ---- ${NODE_NAME} !!!!!!!!!!!!!!"
+                                echo "Deploying code on ---- ${NODE_NAME}"
                             }
+                        }
+                    }
+                    post{
+                        success{
+                            echo "Application successfully deployed on Android!!!"
+                        }
+                        failure{
+                            echo "Failed to deploy on Android!!!"
                         }
                     }
                 }
@@ -44,6 +52,14 @@ pipeline{
                             steps{
                                 echo "Deploying code on ---- ${NODE_NAME} !!!!!!!!!!!!!!!!!!!!!"
                             }
+                        }
+                    }
+                    post{
+                        success{
+                            echo "Application successfully deployed on iOS!!!"
+                        }
+                        failure{
+                            echo "Failed to deploy on iOS!!!"
                         }
                     }
                 }
