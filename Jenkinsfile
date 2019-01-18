@@ -8,6 +8,11 @@ pipeline{
 				    agent { label 'MAC_Agent' }
 				    steps{
 					echo "Executed on ---- ${NODE_NAME}"
+					    stage("Teste"){
+						    steps{
+							echo "Somethiiiingggggggggggg"  
+						    }
+					    }
 				    }
 			    }
 			    stage('Android'){
