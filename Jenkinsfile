@@ -5,16 +5,16 @@ pipeline{
 		stage('Pipeline'){
 			parallel{
 			    stage('iOS'){
-				agent { label 'MAC_Agent' }
 				stage('Git'){
+				    agent { label 'MAC_Agent' }
 				    steps{
 					echo "Executed on ---- ${NODE_NAME}"
 				    }
 				}
 			    }
 			    stage('Android'){
-				agent any
 				stage('Git'){
+				    agent any
 				    steps{
 					echo "Executed on ---- ${NODE_NAME}"
 				    }
