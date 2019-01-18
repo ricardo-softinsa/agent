@@ -15,7 +15,6 @@ pipeline{
                         stage('Analising code'){
                             steps{
                                 echo "Analising code on ---- ${NODE_NAME}"
-                                echo "${UNKNOWN_VAR}"
                             }
                         }
                         stage('Deploying'){
