@@ -26,10 +26,10 @@ pipeline{
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
+                            slackSend color: 'good', message: "Platform: ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
                         }
                         failure{
-                            slackSend color: 'danger', message: "ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
+                            slackSend color: 'danger', message: "Platform: ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}"
                         }
                     }
                 }
@@ -56,10 +56,10 @@ pipeline{
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
+                            slackSend color: 'good', message: "Platform: iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
                         }
                         failure{
-                            slackSend color: 'danger', message: "iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
+                            slackSend color: 'danger', message: "Platform: iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}"
                         }
                     }
                 }
@@ -75,3 +75,4 @@ pipeline{
         }
     }
 }
+
