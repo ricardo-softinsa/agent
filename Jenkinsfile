@@ -3,6 +3,7 @@ pipeline{
 	
 	stages{
 		stage('Pipeline'){
+			agent none
 			parallel{
 			    stage('iOS'){
 				agent { label 'MAC_Agent' }
