@@ -26,10 +26,10 @@ pipeline{
                     }
                     post{
                         success{
-                            echo "Application successfully deployed on Android!!!"
+                            slackSend color: 'good', message: "The pipeline ${currentBuild.fullDisplayName} deployed successfully on Android!"
                         }
                         failure{
-                            echo "Failed to deploy on Android!!!"
+                            slackSend color: 'danger', message: "The pipeline ${currentBuild.fullDisplayName} failed to deploy on Android!"
                         }
                     }
                 }
