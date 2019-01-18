@@ -40,6 +40,7 @@ pipeline{
                         stage('Git Checkout'){
                             steps{
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
+				    echo "${VARR}"
                             }
                         }
                         stage('Analising code'){
