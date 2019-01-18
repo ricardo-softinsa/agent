@@ -26,10 +26,10 @@ pipeline{
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "The pipeline ${currentBuild.fullDisplayName} deployed successfully on Android!"
+                            slackSend color: 'good', message: "ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
                         }
                         failure{
-                            slackSend color: 'danger', message: "The pipeline ${currentBuild.fullDisplayName} failed to deploy on Android!"
+                            slackSend color: 'danger', message: "ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
                         }
                     }
                 }
@@ -56,14 +56,22 @@ pipeline{
                     }
                     post{
                         success{
-                            echo "Application successfully deployed on iOS!!!"
+                            slackSend color: 'good', message: "iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
                         }
                         failure{
-                            echo "Failed to deploy on iOS!!!"
+                            slackSend color: 'danger', message: "iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nInfo: ${env.BUILD_URL}"
                         }
                     }
                 }
             }
+        }
+    }
+    post{
+        success{
+            slackSend color: 'good', message: "Name: ${currentBuild.fullDisplayName}\nStatus: Success!\nInfo: ${env.BUILD_URL}"
+        }
+        failure{
+            slackSend color: 'danger', message: "Name: ${currentBuild.fullDisplayName}\nStatus: Failure\nInfo: ${env.BUILD_URL}"
         }
     }
 }
