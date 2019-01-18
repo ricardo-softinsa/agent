@@ -23,7 +23,6 @@ pipeline{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
                                 echo "Analising code on ---- ${NODE_NAME}"
-                                echo "${UNKNOWN_VAR}"
                             }
                         }
                         stage('Deploying'){
@@ -37,7 +36,7 @@ pipeline{
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "Platform: ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
+                            slackSend color: 'good', message: "Platform: ANDROID\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
                         }
                         failure{
                             slackSend color: 'danger', message: "Platform: ANDROID\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
@@ -70,13 +69,14 @@ pipeline{
                                 script{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
+                                echo "${UNKNOWN_VAR}"
                                 echo "Deploying code on ---- ${NODE_NAME} !!!!!!!!!!!!!!!!!!!!!"
                             }
                         }
                     }
                     post{
                         success{
-                            slackSend color: 'good', message: "Platform: iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
+                            slackSend color: 'good', message: "Platform: iOS\nStatus: Success!\nName: ${currentBuild.fullDisplayName}"
                         }
                         failure{
                             slackSend color: 'danger', message: "Platform: iOS\nStatus: Failed\nName: ${currentBuild.fullDisplayName}\nFailed On: ${FAILED_STAGE}"
@@ -95,5 +95,3 @@ pipeline{
         }
     }
 }
-
-
