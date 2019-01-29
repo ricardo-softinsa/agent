@@ -19,10 +19,14 @@ pipeline{
                         }
                         stage('Analising code'){
                             steps{
-                                script{
+				script{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
-                                echo "Analising code on ---- ${NODE_NAME}"
+                                echo "SonarQube analysis"
+                                withSonarQubeEnv('SonarServer') {
+                                    sh "\"${scannerHome}/bin/sonar-scanner\""
+                                }
+                                //sleep 5
                             }
                         }
                         stage('Deploying'){
@@ -54,14 +58,22 @@ pipeline{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
+				    checkout scm
                             }
                         }
                         stage('Analising code'){
+				                            environment{
+                                scannerHome = tool 'Scanner';
+                            }
                             steps{
-                                script{
+				script{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
-                                echo "Analising code on ---- ${NODE_NAME}"
+                                echo "SonarQube analysis"
+                                withSonarQubeEnv('SonarServer') {
+                                    sh "\"${scannerHome}/bin/sonar-scanner\""
+                                }
+                                //sleep 5
                             }
                         }
                         stage('Deploying'){
