@@ -14,6 +14,7 @@ pipeline{
                                 script{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
+				git 'https://github.com/ricardo-softinsa/agent.git'
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
                             }
                         }
@@ -57,8 +58,8 @@ pipeline{
                                 script{
                                     FAILED_STAGE=env.STAGE_NAME
                                 }
+				git 'https://github.com/ricardo-softinsa/agent.git'
                                 echo "Checking out git repo on ---- ${NODE_NAME}"
-				    checkout scm
                             }
                         }
                         stage('Analising code'){
